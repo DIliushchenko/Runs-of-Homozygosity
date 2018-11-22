@@ -7,15 +7,15 @@
 # OUTPUT FILE(S): Body/4Figures/RohMoreHomParentsLessHomKids.R.01.pdf
 
 ###############################
-# PURPOSE		: 
-# AUTHOR, DATE	: 
-# SCRIPT		: 
-# INPUT FILE(S)	: 
-# OUTPUT FILE(S): 
+# PURPOSE		: Mean parents and kids full and quantiles comparison for every single family
+# AUTHOR, DATE	: Kostya, Lisa, 22 Nov 2018
+# SCRIPT		: Head/2Scripts/RohAffectedNonaffectedSiblinbgs.R
+# INPUT FILE(S)	: Body/2Derived/Roh.txt
+# OUTPUT FILE(S): Body/4Figures/RohAffectedNonaffectedSiblinbgs.R.01.pdf
 
 ###############################
-# PURPOSE		: 
-# AUTHOR, DATE	: 
-# SCRIPT		: 
-# INPUT FILE(S)	: 
-# OUTPUT FILE(S): 
+# PURPOSE		: Mean affected and healthy kids full and quantiles comparison for every single family
+# AUTHOR, DATE	: Lisa, 22 Nov 2018
+# SCRIPT		: Head/2Scripts/RohAffectedNonaffectedKids.R
+# INPUT FILE(S)	: Body/2Derived/Roh.txt
+# OUTPUT FILE(S): Body/4Figures/RohAffectedNonaffectedKids.R.01.pdf
