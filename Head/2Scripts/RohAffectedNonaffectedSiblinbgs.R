@@ -8,7 +8,7 @@ summary(RohFull$KB)
 
 pdf("../../Body/4Figures/RohAffectedNonaffectedSiblinbgs.R.01.pdf")
 
-VecOfThresholds = c('all','FirstQ','SecondQ','ThirdQ','FourthQ')
+VecOfThresholds = c('all','FirstQ','SecondQ','ThirdQ','FourthQ', 'longer90%')
 for (i in 1:length(VecOfThresholds))
 { # i = 2
 if (VecOfThresholds[i] == 'all')     {ROH = RohFull}
@@ -16,6 +16,7 @@ if (VecOfThresholds[i] == 'FirstQ')  {ROH = RohFull[RohFull$KB < quantile(RohFul
 if (VecOfThresholds[i] == 'SecondQ') {ROH = RohFull[RohFull$KB < quantile(RohFull$KB, 0.5) & RohFull$KB >= quantile(RohFull$KB, 0.25),]}
 if (VecOfThresholds[i] == 'ThirdQ')  {ROH = RohFull[RohFull$KB < quantile(RohFull$KB, 0.75) & RohFull$KB >= quantile(RohFull$KB, 0.5),]}
 if (VecOfThresholds[i] == 'FourthQ') {ROH = RohFull[RohFull$KB >= quantile(RohFull$KB, 0.75),]}
+if (VecOfThresholds[i] == 'longer90%') {ROH = RohFull[RohFull$KB >= quantile(RohFull$KB, 0.90),]}
     
 ##### get sum of ROH per each individuum, filter out non complete familie
 
@@ -49,11 +50,13 @@ if (VecOfThresholds[i] == 'all')  {MinX = min(ParentsKids$Contrasts); MaxX = max
 a = wilcox.test(ParentsKids$Contrasts, mu = 0)
 Pvalue = as.numeric(a[3])
 ObservedMedian = round(median(ParentsKids$Contrasts),0)
-Title = paste(VecOfThresholds[i],': ObservedMedian = ',ObservedMedian, ', Pvalue = ',Pvalue, sep = ' ')
+Title = paste(VecOfThresholds[i],':ObservedMedian =',ObservedMedian, 
+',Pvalue =',Pvalue, sep = ' ')
 Title = paste(Title,Title2, sep = '\n')
 
 
-hist(ParentsKids$Contrasts, breaks = 50, main = Title, xlab = 'Contrasts(MeanKidsMinusMeanParents, Kb)', xlim = c(MinX,MaxX), col = 'grey')
+hist(ParentsKids$Contrasts, breaks = 50, main = Title, 
+    xlab = 'Contrasts(MeanKidsMinusMeanParents, Kb)', xlim = c(MinX,MaxX), col = 'grey')
 abline(v=0, lwd = 2, col = 'red')
 
 }
