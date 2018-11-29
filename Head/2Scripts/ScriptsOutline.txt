@@ -1,3 +1,10 @@
+Body/1Raw/
+
+###############################
+# Body/1Raw/gencode.v25.annotation.gtf.Genes.Shet.pLI.FIS.RVIS.GHIS.KnKs.GC.BrainSpecificRanking.Branch
+# file with all human genes and gene-specific info
+# uploaded by KP
+# we have to clarify - which version of the human genome is here?
 
 ###############################
 # PURPOSE		: To compare the increase in total length of ROH from parents to kids within each family
