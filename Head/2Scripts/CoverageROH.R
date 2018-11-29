@@ -1,20 +1,16 @@
 rm(list=ls(all = TRUE))
 
 ##read our table from our directory
-wd = getwd()
-wd = paste(wd,'/Runs-of-Homozygosity/Body/2Derived/', sep="")
-setwd(wd)
-ROH = read.table('Roh.txt')
+Roh = read.table("../../Body/2Derived/Roh.txt")   ### KP!!!
 
 ### create data for all windows 
-DataDrivedWindows = data.frame()
 
-for (j in 1:25) 
-{ 
-  ROH = ROH[ROH$CHR == j,]
+for (j in 1:22) # KP!!! 
+{ # j = 1 
+  ROH = Roh[Roh$CHR == j,]
   VecOfUniqueBreakPoints = sort(unique(c(ROH$POS1,ROH$POS2)))
-  VecOfStart = VecOfUniqueBreakPoints[(-length(VecOfUniqueBreakPoints))]
-  VecEnd = VecOfUniqueBreakPoints[-1]
+  VecOfStart = VecOfUniqueBreakPoints[(-length(VecOfUniqueBreakPoints))] # delete last
+  VecEnd = VecOfUniqueBreakPoints[-1]  # delete first
   DataWind = data.frame(VecOfStart,VecEnd)
   DataWind$Coverage = 0
   DataWind$CHR = j
@@ -25,13 +21,10 @@ for (j in 1:25)
     coverage = nrow(ROH[ROH$POS1 <= Start & ROH$POS2 >= End,]) 
     DataWind$Coverage[i] = coverage
   }
-  DataDrivedWindows = rbind(DataDrivedWindows,DataWind)
+  if (j == 1) {DataDrivedWindows = DataWind}                             # KP!!!!
+  if (j >  1) {  DataDrivedWindows = rbind(DataDrivedWindows,DataWind)}  # KP!!!!
 }
-### write the table in our dir
+
+### write the table
 names(DataDrivedWindows) <- c('StartofWindow', 'EndofWindow', 'coverage', 'CHR')
-File = paste(wd,'CoverageROH.txt', sep = '')
-write.table(CoverageCHR1, file = File)
-
-
-
-
+write.table(DataDrivedWindows,"../../Body/3Results/CoverageROHForWindows.txt")
