@@ -1,10 +1,25 @@
-Body/1Raw/
+Body/1Raw/:
+
+###############################
+# Body/1Raw/plink.GRCh37.map.zip
+# genetic map file (one chromosome - one file) for GRCh37
+# http://bochet.gcc.biostat.washington.edu/beagle/genetic_maps/
+# Ansar used GrCh37/hg19 to call ROH
 
 ###############################
 # Body/1Raw/gencode.v25.annotation.gtf.Genes.Shet.pLI.FIS.RVIS.GHIS.KnKs.GC.BrainSpecificRanking.Branch
 # file with all human genes and gene-specific info
 # uploaded by KP
 # we have to clarify - which version of the human genome is here?
+
+Head/2Scripts/:
+
+###############################
+# PURPOSE		: To compare the increase in total length of ROH from parents to kids within each family
+# AUTHOR, DATE	: Kostya, 22 Nov 2018  
+# SCRIPT		: Head/2Scripts/MergeRohRecombGeneTraits.R
+# INPUT FILE(S)	: Body/3Results/CoverageROHForWindows.txt + Body/1Raw/gencode.v25.annotation.gtf.Genes.Shet.pLI.FIS.RVIS.GHIS.KnKs.GC.BrainSpecificRanking.Branch + Body/1Raw/RecombMap/plink.GRCh37.map.zip
+# OUTPUT FILE(S): 
 
 ###############################
 # PURPOSE		: To compare the increase in total length of ROH from parents to kids within each family
