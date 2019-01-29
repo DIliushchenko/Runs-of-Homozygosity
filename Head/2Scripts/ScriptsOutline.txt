@@ -1,7 +1,7 @@
 Body/1Raw/:
 
 ###############################
-# Body/1Raw/plink.GRCh37.map.zip
+# Body/1Raw/plink.GRCh37.map.zip # HapMap GrCh37 genetic map with cM units in PLINK format: chromosome (1-22, X, Y or 0 if unplaced)    rs# or snp identifier    Genetic distance (morgans)     Base-pair position (bp units)
 # genetic map file (one chromosome - one file) for GRCh37
 # http://bochet.gcc.biostat.washington.edu/beagle/genetic_maps/
 # Ansar used GrCh37/hg19 to call ROH
@@ -15,11 +15,19 @@ Body/1Raw/:
 Head/2Scripts/:
 
 ###############################
-# PURPOSE		: To compare the increase in total length of ROH from parents to kids within each family
-# AUTHOR, DATE	: Kostya, 22 Nov 2018  
+# PURPOSE		: To derive for each gene average recombination level and Roh coverage 
+# AUTHOR, DATE	: Kostya, Jan 2019  
 # SCRIPT		: Head/2Scripts/MergeRohRecombGeneTraits.R
 # INPUT FILE(S)	: Body/3Results/CoverageROHForWindows.txt + Body/1Raw/gencode.v25.annotation.gtf.Genes.Shet.pLI.FIS.RVIS.GHIS.KnKs.GC.BrainSpecificRanking.Branch + Body/1Raw/RecombMap/plink.GRCh37.map.zip
-# OUTPUT FILE(S): 
+# OUTPUT FILE(S): /Body/3Results/GeneRohRecomb.txt
+
+###############################
+# PURPOSE		: To analyse if ROH coverage is a function of both - recombination level and selection
+# AUTHOR, DATE	: Kostya, Jan 2019  
+# SCRIPT		: Head/2Scripts/RohAsAFunctionOfRecombAndSelection.R
+# INPUT FILE(S)	: Body/3Results/CoverageROHForWindows.txt + Body/1Raw/gencode.v25.annotation.gtf.Genes.Shet.pLI.FIS.RVIS.GHIS.KnKs.GC.BrainSpecificRanking.Branch + Body/1Raw/RecombMap/plink.GRCh37.map.zip
+# OUTPUT FILE(S): /Body/3Results/GeneRohRecomb.txt
+
 
 ###############################
 # PURPOSE		: To compare the increase in total length of ROH from parents to kids within each family
