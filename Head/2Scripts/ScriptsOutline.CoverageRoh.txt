@@ -102,3 +102,11 @@ Analyse distribution of ROHs as a function of recombination and selection
 # SCRIPT		: Head/2Scripts/RohAffectedNonaffectedKids.R
 # INPUT FILE(S)	: Body/2Derived/Roh.txt
 # OUTPUT FILE(S): Body/4Figures/RohAffectedNonaffectedKids.R.01.pdf
+
+###############################
+# PURPOSE   : Graphic of windows' coverage  in each chr
+# AUTHOR, DATE : Kostya, Dima, 6 February 2019
+# SCRIPT : Head/2Scripts/AnalysisOfAllSegments.R
+# INPUT FILE(S) : /Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classAll.txt, /Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classA.txt, /Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classB.txt,
+/Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classC.txt
+# OUTPUT FILE(S) : /Body/4Figures/CoverageRoh.PlotterOfAllSegments.R01.pdf
