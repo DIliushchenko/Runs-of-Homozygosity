@@ -44,7 +44,7 @@ To draw distribution of different ROHs along the human genome
 => SCRIPT: 
 ../../Head/2Scripts/CoverageRoh.MergeRohRecombGeneTraits.R
 => PURPOSE: 
-To derive for each gene average recombination level and Roh coverage 
+To derive for each gene Recombination and ROH coverage (three classes + all)
 => INPUT: 
 ../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classAll.txt +    
 ../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classA.txt + 
@@ -60,13 +60,26 @@ To derive for each gene average recombination level and Roh coverage
 
 ###############################
 => SCRIPT:
-../../Head/2Scripts/CoverageRoh.RohAsAFunctionOfRecombAndSelection.R
+../../Head/2Scripts/CoverageRoh.RohAsAFunctionOfRecombAndSelectionA.R
 => PURPOSE: 
-To analyse if ROH coverage is a function of both - recombination level and selection
+To merge ROH coverages
 => INPUT:
+../../Body/3Results/GeneRohRecomb.classAll.txt
+../../Body/3Results/GeneRohRecomb.classA.txt
+../../Body/3Results/GeneRohRecomb.classB.txt
+../../Body/3Results/GeneRohRecomb.classC.txt
+=> OUTPUT:
+../../Body/3Results/GeneRohRecomb.classesABCAlls.txt
 
-Body/3Results/CoverageROHForWindows.txt + Body/1Raw/gencode.v25.annotation.gtf.Genes.Shet.pLI.FIS.RVIS.GHIS.KnKs.GC.BrainSpecificRanking.Branch + Body/1Raw/RecombMap/plink.GRCh37.map.zip
-# OUTPUT FILE(S): /Body/3Results/GeneRohRecomb.txt
+###############################
+=> SCRIPT:
+../../Head/2Scripts/CoverageRoh.RohAsAFunctionOfRecombAndSelectionB.R
+=> PURPOSE:
+Analyse distribution of ROHs as a function of recombination and selection
+=> INPUT:
+../../Body/3Results/GeneRohRecomb.classesABCAlls.txt
+=> OUTPUT:
+../../Body/4Figures/CoverageRoh.RohAsAFunctionOfRecombAndSelectionB.R.01.pdf
 
 
 ###############################

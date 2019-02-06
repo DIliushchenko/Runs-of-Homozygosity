@@ -12,10 +12,4 @@ Roh$FractionCoveredByC = Roh$RohCCoverage / Roh$RohAllCoverage
 Roh$FractionCoveredByB = Roh$RohBCoverage / Roh$RohAllCoverage
 Roh$FractionCoveredByA = Roh$RohACoverage / Roh$RohAllCoverage
 
-par(mfrow=c(2,3))
-hist(Roh$FractionCoveredByA)
-hist(Roh$FractionCoveredByB)
-hist(Roh$FractionCoveredByC)
-boxplot(Roh$FractionCoveredByA,Roh$FractionCoveredByB,Roh$FractionCoveredByC)
-
 write.table(Roh, "../../Body/3Results/GeneRohRecomb.classesABCAlls.txt")

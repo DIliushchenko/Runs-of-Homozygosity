@@ -31,8 +31,6 @@ plot(log2(Roh[Roh$RohACoverage > 0,]$RecombActivity),log2(Roh[Roh$RohACoverage >
 plot(log2(Roh[Roh$RohBCoverage > 0,]$RecombActivity),log2(Roh[Roh$RohBCoverage > 0,]$RohACoverage))
 plot(log2(Roh[Roh$RohCCoverage > 0,]$RecombActivity),log2(Roh[Roh$RohCCoverage > 0,]$RohACoverage))
 
-dev.off()
-
 ######## 3: multiple models with recombination and selection:
 
 ##### -recomb + KnKsMouse (only C positively correlate with Kn/Ks)
@@ -112,3 +110,4 @@ a<-lm(Roh[Roh$RohCCoverage > 0,]$RohCCoverage ~ scale(Roh[Roh$RohCCoverage > 0,]
 a<-lm(Roh[Roh$RohCCoverage > 0,]$RohCCoverage ~ scale(Roh[Roh$RohCCoverage > 0,]$RecombActivity) + scale(Roh[Roh$RohCCoverage > 0,]$GcContent) + scale(Roh[Roh$RohCCoverage > 0,]$ProbOfBeingLofIntolerant) + scale(Roh[Roh$RohCCoverage > 0,]$KnKsMouse)); summary(a)  # recomb and KnKs
 a<-lm(Roh[Roh$RohCCoverage > 0,]$RohCCoverage ~ scale(Roh[Roh$RohCCoverage > 0,]$RecombActivity) + scale(Roh[Roh$RohCCoverage > 0,]$GcContent) + scale(Roh[Roh$RohCCoverage > 0,]$ProbOfBeingLofIntolerant) + scale(Roh[Roh$RohCCoverage > 0,]$KnKsMouse)); summary(a)  # -1.2-0.75-0.22+1.47
 
+dev.off()
