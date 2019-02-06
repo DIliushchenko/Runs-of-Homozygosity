@@ -1,0 +1,91 @@
+Body/1Raw/:
+
+###############################
+# Body/1Raw/plink.GRCh37.map.zip # HapMap GrCh37 genetic map with cM units in PLINK format: chromosome (1-22, X, Y or 0 if unplaced)    rs# or snp identifier    Genetic distance (morgans)     Base-pair position (bp units)
+# genetic map file (one chromosome - one file) for GRCh37
+# http://bochet.gcc.biostat.washington.edu/beagle/genetic_maps/
+# Ansar used GrCh37/hg19 to call ROH
+
+###############################
+# Body/1Raw/gencode.v25.annotation.gtf.Genes.Shet.pLI.FIS.RVIS.GHIS.KnKs.GC.BrainSpecificRanking.Branch
+# file with all human genes and gene-specific info
+# uploaded by KP
+# we have to clarify - which version of the human genome is here?
+
+Head/2Scripts/:
+
+###############################
+=> SCRIPT: 
+../../Head/2Scripts/CoverageRoh.CoverageROH.R
+=> PURPOSE: 
+To derive data-driven windows and coverage for each window. Do it for all ROHs and three length-classes of ROHs separately (A,B,C ).
+=> INPUT: 
+../../Body/2Derived/Roh.txt
+=> OUTPUT: 
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classAll.txt +
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classA.txt + 
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classB.txt + 
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classC.txt + 
+
+###############################
+=> SCRIPT: 
+../../Head/2Scripts/CoverageRoh.PlotterOfAllSegments.R
+=> PURPOSE: 
+To draw distribution of different ROHs along the human genome
+=> INPUT: 
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classAll.txt + 
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classA.txt + 
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classB.txt + 
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classC.txt + 
+=> OUTPUT: 
+../../Body/4Figures/CoverageRoh.PlotterOfAllSegments.R01.pdf
+
+###############################
+=> SCRIPT: 
+../../Head/2Scripts/CoverageRoh.MergeRohRecombGeneTraits.R
+=> PURPOSE: 
+To derive for each gene average recombination level and Roh coverage 
+=> INPUT: 
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classAll.txt +    
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classA.txt + 
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classB.txt + 
+../../Body/3Results/CoverageRoh.CoverageROH.WindowsForRoh.classC.txt + 
+../../Body/1Raw/gencode.v25.annotation.gtf.Genes.Shet.pLI.FIS.RVIS.GHIS.KnKs.GC.BrainSpecificRanking.Branch + 
+../../Body/1Raw/RecombMap/plink.GRCh37.map.zip
+=> OUTPUT:
+../../Body/3Results/GeneRohRecomb.classAll.txt
+../../Body/3Results/GeneRohRecomb.classA.txt
+../../Body/3Results/GeneRohRecomb.classB.txt
+../../Body/3Results/GeneRohRecomb.classC.txt
+
+###############################
+=> SCRIPT:
+../../Head/2Scripts/CoverageRoh.RohAsAFunctionOfRecombAndSelection.R
+=> PURPOSE: 
+To analyse if ROH coverage is a function of both - recombination level and selection
+=> INPUT:
+
+Body/3Results/CoverageROHForWindows.txt + Body/1Raw/gencode.v25.annotation.gtf.Genes.Shet.pLI.FIS.RVIS.GHIS.KnKs.GC.BrainSpecificRanking.Branch + Body/1Raw/RecombMap/plink.GRCh37.map.zip
+# OUTPUT FILE(S): /Body/3Results/GeneRohRecomb.txt
+
+
+###############################
+# PURPOSE		: To compare the increase in total length of ROH from parents to kids within each family
+# AUTHOR, DATE	: Kostya, 22 Nov 2018  
+# SCRIPT		: Head/2Scripts/RohMoreHomParentsLessHomKids.R
+# INPUT FILE(S)	: Body/2Derived/Roh.txt
+# OUTPUT FILE(S): Body/4Figures/RohMoreHomParentsLessHomKids.R.01.pdf
+
+###############################
+# PURPOSE		: Mean parents and kids full and quantiles comparison for every single family
+# AUTHOR, DATE	: Kostya, Lisa, 22 Nov 2018
+# SCRIPT		: Head/2Scripts/RohAffectedNonaffectedSiblinbgs.R
+# INPUT FILE(S)	: Body/2Derived/Roh.txt
+# OUTPUT FILE(S): Body/4Figures/RohAffectedNonaffectedSiblinbgs.R.01.pdf
+
+###############################
+# PURPOSE		: Mean affected and healthy kids full and quantiles comparison for every single family
+# AUTHOR, DATE	: Lisa, 22 Nov 2018
+# SCRIPT		: Head/2Scripts/RohAffectedNonaffectedKids.R
+# INPUT FILE(S)	: Body/2Derived/Roh.txt
+# OUTPUT FILE(S): Body/4Figures/RohAffectedNonaffectedKids.R.01.pdf
